@@ -1,0 +1,105 @@
+<div class="card">
+<div *ngIf="songs.length">
+    <h3>Songs</h3>
+    <br>
+    <table class="table table-hover table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Vote</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let song of songs; index as i; voteI as v">
+              <td>
+                  {{i + 1}}
+              </td>
+              <td>{{song.title}}</td>
+              <td>{{song.artist}}</td>
+              <td>
+                {{song.vote}}
+                <img src="https://img.icons8.com/nolan/64/up.png" width="30" (click)="upvoteSong(song)">
+              </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="delete-modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h4 class="modal-title">Delete!</h4>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+
+    <!-- Modal body -->
+    <div class="modal-body">
+        <div *ngIf="deletedSong">
+          <p [hidden] = "returnedMessage">
+            Do you want delete a song with id = {{deletedSong.id}}
+          </p>
+          <p [hidden] = "!returnedMessage">
+            {{returnedMessage}}
+          </p>
+        </div>
+    </div>
+
+    <!-- Modal footer -->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      <button [hidden] = "returnedMessage" type="button" class="btn btn-danger" (click)="deleteSong()">Delete</button>
+    </div>
+    </div>
+  </div>
+  </div>
+
+<div *ngIf="showSong">
+    <h3>Update Song</h3>
+    <form (ngSubmit)="updateSong()">
+        <!-- ID -->
+        <div class="form-group">
+          <label for="id">#</label>
+          <input type="numer" class="form-control"
+                    id="id" required [(ngModel)]="showSong.id" name="id" disabled>
+        </div>
+        <div class="form-group">
+          <label for="firstname">Title</label>
+          <input type="text" class="form-control" placeholder="Enter Title"
+                    id="firstname" required [(ngModel)]="showSong.title" name="title">
+        </div>
+        <div class="form-group">
+            <label for="lastname">Artist</label>
+            <input type="text" class="form-control" placeholder="Enter Artist"
+                      id="lastname" required [(ngModel)]="showSong.artist" name="artist">
+        </div>
+
+        <div class="form-group">
+          <label for="age">Vote</label>
+          <input type="number" class="form-control" placeholder="Enter Vote"
+                      id="age" required [(ngModel)]="showSong.vote" name="vote">
+        </div>
+
+        <button type="submit" class="btn btn-success">Update</button>
+      </form>
+</div>
+<app-message></app-message>
+
+
+<script>
+  let pathname = window.location.pathname;
+  if(pathname == ""){
+      $(".nav .nav-item a:first").addClass("active");
+      $(".nav .nav-item a:last").removeClass("active");
+  } else if (pathname == "/songs") {
+      $(".nav .nav-item a:last").addClass("active");
+      $(".nav .nav-item a:first").removeClass("active");
+  }
+  alert("ok");
+</script>
+</div>
