@@ -1,6 +1,8 @@
+<div *ngIf="isLoggedIn; else elseBlock">
 <div class="card">
 <div *ngIf="songs.length">
-    <h3>Songs</h3>
+  <br>
+    <h2>Songs</h2>
     <br>
     <table class="table table-hover table-sm">
         <thead class="thead-dark">
@@ -103,3 +105,9 @@
   alert("ok");
 </script>
 </div>
+</div>
+<ng-template #elseBlock>
+  <br>
+  <h1>Please log in!</h1>
+  <br>
+</ng-template>

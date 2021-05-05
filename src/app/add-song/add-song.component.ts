@@ -18,9 +18,11 @@ export class AddSongComponent implements OnInit {
   isLoggedIn = false;
   username?: string;
 
-  constructor(private songService: SongService, private messageService: MessageService, private userService: UserService, private tokenStorageService: TokenStorageService) { }
+  constructor(private songService: SongService, private messageService: MessageService,
+              private userService: UserService, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
+
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {

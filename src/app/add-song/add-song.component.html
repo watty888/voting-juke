@@ -1,14 +1,13 @@
-<div class="card" style="width: auto" >
+<div class="card" style="width: auto" *ngIf="isLoggedIn; else elseBlock">
+  <br>
   <h2 class="card-title" style="left: auto">Add a Song!</h2>
 <div class="card-body">
   <form (ngSubmit)="onSubmit()">
-    <!-- Title -->
     <div class="form-group">
       <label for="title">Title</label>
       <input type="text" class="form-control" placeholder="Enter Title"
                 id="title" required [(ngModel)]="song.title" name="title">
     </div>
-    <!-- Artist -->
     <div class="form-group">
         <label for="artist">Artist</label>
         <input type="text" class="form-control" placeholder="Enter Artist"
@@ -21,3 +20,8 @@
 </div>
 <app-message></app-message>
 </div>
+<ng-template #elseBlock>
+  <br>
+  <h1>Please log in!</h1>
+  <br>
+</ng-template>

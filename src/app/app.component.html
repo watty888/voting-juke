@@ -1,8 +1,10 @@
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark" *ngIf="isLoggedIn">
+<nav class="navbar navbar-expand-sm bg-info navbar-dark" *ngIf="isLoggedIn">
 
   <img src="https://img.icons8.com/color/50/000000/jukebox.png"/>
   <ul class="navbar-nav">
-
+    <li class="nav-item" style="padding-right: 10px">
+      <h3>Hello {{ username }}!</h3>
+    </li>
     <li class="nav-item" id="li_list_songs">
       <a class="nav-link" href="/songs">Voting List</a>
     </li>
@@ -10,17 +12,17 @@
     <li class="nav-item" id="li_add_song">
       <a class="nav-link" href="/addsong">Add Song</a>
     </li>
-    <li class="nav-item">
-      <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
-    </li>
-    <li class="nav-item">
-      <a href class="nav-link" (click)="logout()">LogOut</a>
+
+    <li class="nav-item" style="padding-left: 30px">
+      <button type="button" class="btn btn-danger" (click)="logout()">Logout</button>
+      <!--<a href class="nav-link" (click)="logout()">LogOut</a>-->
     </li>
   </ul>
 
 </nav>
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark" *ngIf="!isLoggedIn">
+<nav class="navbar navbar-expand-sm bg-info navbar-dark" *ngIf="!isLoggedIn">
   <img src="https://img.icons8.com/color/50/000000/jukebox.png"/>
+  <h3>Jukevote</h3>
   <ul class="navbar-nav ml-auto">
     <li class="nav-item">
       <a href="/register" class="nav-link" routerLink="register">Sign Up</a>

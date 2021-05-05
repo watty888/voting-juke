@@ -18,7 +18,8 @@ export class ListSongsComponent implements OnInit {
   deletedSong: Song;
   returnedMessage: string;
 
-  constructor(private songService: SongService, private messageService: MessageService, private userService: UserService, private tokenStorageService: TokenStorageService) { }
+  constructor(private songService: SongService, private messageService: MessageService,
+              private userService: UserService, private tokenStorageService: TokenStorageService) { }
 
   content?: string;
   private roles: string[] = [];
@@ -27,6 +28,15 @@ export class ListSongsComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.username = user.username;
+    }
 
     this.retrieveAllSongs();
   }
