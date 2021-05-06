@@ -3,7 +3,9 @@ services:
     mysql:
         container_name: mysqlcontainer
         image: mysql
-        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: db_example
         volumes:
           - "./db-spring.sql:/docker-entrypoint-initdb.d/1.sql"
         ports:
