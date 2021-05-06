@@ -97,33 +97,33 @@ export class ListSongsComponent implements OnInit {
         this.sortSongs();
 
         // update songs list
-        this.songs.map((x) => {
-          if (x.id === this.showSong.id) {
-            x = this.showSong;
-          }
-        });
+        // this.songs.map((x) => {
+        //   if (x.id === this.showSong.id) {
+        //     x = this.showSong;
+        //   }
+        // });
 
-        const msg: string =
-          "Update Successfully! -> New Song's properties: <br>" +
-          '<ul>' +
-          '<li>' +
-          'id: ' +
-          this.showSong.id +
-          '</li>' +
-          '<li>' +
-          'title: ' +
-          this.showSong.title +
-          '</li>' +
-          '<li>' +
-          'artist: ' +
-          this.showSong.artist +
-          '</li>' +
-          '<li>' +
-          'vote: ' +
-          this.showSong.vote +
-          '</li>' +
-          '</ul>';
-        this.messageService.add(msg);
+        // const msg: string =
+        //   "Update Successfully! -> New Song's properties: <br>" +
+        //   '<ul>' +
+        //   '<li>' +
+        //   'id: ' +
+        //   this.showSong.id +
+        //   '</li>' +
+        //   '<li>' +
+        //   'title: ' +
+        //   this.showSong.title +
+        //   '</li>' +
+        //   '<li>' +
+        //   'artist: ' +
+        //   this.showSong.artist +
+        //   '</li>' +
+        //   '<li>' +
+        //   'vote: ' +
+        //   this.showSong.vote +
+        //   '</li>' +
+        //   '</ul>';
+        // this.messageService.add(msg);
       },
       (error) => {
         console.log(error);

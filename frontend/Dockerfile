@@ -1,14 +1,15 @@
-# Stage 1
+### STAGE 1: Build ###
+FROM node:12.7-alpine AS build
+WORKDIR /usr/src/app
+COPY package.json package-lock.json ./
+RUN npm cache clean --force
+RUN npm i
+COPY . .
+RUN npm run build
 
-FROM node:10-alpine as build-step
-RUN mkdir -p /app
-WORKDIR /app
-COPY package.json /app
-RUN npm install
-COPY . /app
-RUN npm run build --prod
-
-# Stage 2
-
+### STAGE 2: Run ###
 FROM nginx:1.17.1-alpine
-COPY --from=build-step /app/docs /usr/share/nginx/html
+### Do note the project name, as 'ng build or npm run build'
+### will create the directory structure like this
+### /dist/your-project-name
+COPY --from=build /usr/src/app/dist/angular-httpclient /usr/share/nginx/html

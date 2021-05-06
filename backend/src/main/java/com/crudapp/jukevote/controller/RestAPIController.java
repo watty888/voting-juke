@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/song")
 public class RestAPIController {
 
@@ -33,7 +33,7 @@ public class RestAPIController {
         }
     }
 
-    @GetMapping("/retrieveinfos")
+    @GetMapping("/songs")
     public ResponseEntity<Message> retrieveSongInfo() {
 
         try {
