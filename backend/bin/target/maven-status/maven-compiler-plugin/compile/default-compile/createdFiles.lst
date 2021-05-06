@@ -1,0 +1,6 @@
+com\loizenai\crudapp\SpringBootCrudApplication.class
+com\loizenai\crudapp\model\Message.class
+com\loizenai\crudapp\model\Customer.class
+com\loizenai\crudapp\repository\CustomerRepository.class
+com\loizenai\crudapp\service\CustomerServices.class
+com\loizenai\crudapp\controller\RestAPIController.class
