@@ -12,17 +12,19 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AuthService {
+  loggedIn = false;
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post(
-      AUTH_API + 'signin',
-      {
-        username,
-        password,
-      },
-      httpOptions
-    );
+    return this.http
+      .post(
+        AUTH_API + 'signin',
+        {
+          username,
+          password,
+        },
+        httpOptions
+      );
   }
 
   register(username: string, email: string, password: string): Observable<any> {
@@ -35,5 +37,9 @@ export class AuthService {
       },
       httpOptions
     );
+  }
+
+  setLoggedIn(loggedIn: boolean) {
+    this.loggedIn = loggedIn;
   }
 }

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-info navbar-dark" *ngIf="isLoggedIn">
+<nav class="navbar navbar-expand-sm bg-info navbar-dark" *ngIf="!!this.tokenStorageService.getToken()">
 
   <img src="https://img.icons8.com/color/50/000000/jukebox.png"/>
   <ul class="navbar-nav">
@@ -6,11 +6,11 @@
       <h3>Hello {{ username }}!</h3>
     </li>
     <li class="nav-item" id="li_list_songs">
-      <a class="nav-link" href="/songs" routerLink="songs">Voting List</a>
+      <a class="nav-link" href="/songs" routerLink="songs" (click)="this.messageService.clear()">Voting List</a>
     </li>
 
     <li class="nav-item" id="li_add_song">
-      <a class="nav-link" href="/addsong" routerLink="addsong">Add Song</a>
+      <a class="nav-link" href="/addsong" routerLink="addsong" (click)="this.messageService.clear()">Add Song</a>
     </li>
 
     <li class="nav-item" style="padding-left: 30px">
@@ -20,7 +20,7 @@
   </ul>
 
 </nav>
-<nav class="navbar navbar-expand-sm bg-info navbar-dark" *ngIf="!isLoggedIn">
+<nav class="navbar navbar-expand-sm bg-info navbar-dark" *ngIf="!this.tokenStorageService.getToken()">
   <img src="https://img.icons8.com/color/50/000000/jukebox.png"/>
   <h3>Jukevote</h3>
   <ul class="navbar-nav ml-auto">
